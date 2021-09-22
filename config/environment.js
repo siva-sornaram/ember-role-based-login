@@ -4,7 +4,7 @@ module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'ember-role-based-login',
     environment,
-    rootURL: '/',
+    rootURL: '/role-based-login',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

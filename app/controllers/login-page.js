@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import $ from 'jquery';
 import { inject as service } from '@ember/service';
 import cookies from 'ember-cli-js-cookie';
+import { action } from '@ember/object';
 
 export default class LoginController extends Controller {
   @service session;
@@ -11,7 +12,9 @@ export default class LoginController extends Controller {
   errormsg = 'Invalid Username or password';
   err = false;
 
-  validate_user = () => {
+  // validate_user = () => {
+    @action
+    validate_user() {
     var uname = this.username;
     var pass = this.password;
 
@@ -19,7 +22,7 @@ export default class LoginController extends Controller {
 
     var result = $.ajax({
       type: 'POST',
-      url: 'http://localhost:8080/role-based-login-backend1/login',
+      url: '/role-based-login-backend1/login',
       data: {
         uname: uname,
         pass: pass,
@@ -43,7 +46,7 @@ export default class LoginController extends Controller {
       this.session.setUserName(rsObj.userName);
       this.session.setIsValidated(rsObj.isValidated);
       this.session.setRoleId(rsObj.roleId);
-      cookies.set('username', rsObj.userName);
+      // cookies.set('username', rsObj.userName);
       this.router.transitionTo('container');
     } else {
       this.set('err', true);

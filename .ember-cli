@@ -6,5 +6,5 @@
     Setting `disableAnalytics` to true will prevent any data from being sent.
   */
   "disableAnalytics": false,
-  "output-path": "/Users/vigneshram/Desktop/TOMCAT/apache-tomcat-10.0.11/webapps/role-based-login"
+  "output-path": "/Users/vigneshram/Desktop/TOMCAT/apache-tomcat-10.0.11/webapps/drive.zoogle.com"
 }

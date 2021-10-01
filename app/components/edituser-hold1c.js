@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import $ from 'jquery';
+import { action } from '@ember/object';
 
 export default class EdituserHold1cComponent extends Component {
 
@@ -9,7 +10,9 @@ export default class EdituserHold1cComponent extends Component {
 
     @service router;
   
-    update_user = () => {
+    // update_user = () => {
+      @action
+      update_user() {
       var uname = this.username;
       var userId = this.userid;
       var mgmt = document.querySelector('#mgmt').checked;

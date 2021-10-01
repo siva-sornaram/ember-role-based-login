@@ -1,13 +1,16 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import $ from 'jquery';
+import { action } from '@ember/object';
 
 export default class AdduserHoldComponent extends Component {
   @service session;
 
   @service router;
 
-  add_user = () => {
+  // add_user = () => {
+    @action
+    add_user() {
     var uname = this.username;
     var mgmt = document.querySelector('#mgmt').checked;
     var admin = document.querySelector('#admin').checked;

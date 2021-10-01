@@ -20,7 +20,7 @@
         </tr>
     </table>
     {{!-- <button class = "button" style="margin: auto; display:block;" type="button">Login</button> --}}
-    <button type="submit" {{on 'click' this.add_user}} class="button">Add User</button>
+    <button type="submit" {{on 'click' (fn this.add_user) }} class="button">Add User</button>
 
     <strong><p id = "message" style="margin-left: 20px;">  </p></strong>
         

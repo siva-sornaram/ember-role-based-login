@@ -4,7 +4,7 @@ module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'ember-role-based-login',
     environment,
-    rootURL: '/role-based-login',
+    rootURL: '/drive.zoogle.com',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

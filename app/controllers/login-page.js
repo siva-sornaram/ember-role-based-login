@@ -1,20 +1,18 @@
 import Controller from '@ember/controller';
 import $ from 'jquery';
-import { inject as service } from '@ember/service';
 import cookies from 'ember-cli-js-cookie';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class LoginController extends Controller {
-  @service session;
 
   @service router;
 
   errormsg = 'Invalid Username or password';
   err = false;
 
-  // validate_user = () => {
-    @action
-    validate_user() {
+  @action
+  validate_user() {
     var uname = this.username;
     var pass = this.password;
 
@@ -22,7 +20,7 @@ export default class LoginController extends Controller {
 
     var result = $.ajax({
       type: 'POST',
-      url: '/role-based-login-backend1/login',
+      url: 'http://localhost:8080/role-based-login-backend1/login',
       data: {
         uname: uname,
         pass: pass,
@@ -42,18 +40,14 @@ export default class LoginController extends Controller {
     console.log(typeof rsObj, rsObj);
 
     if (rsObj.isValidated) {
-      console.log('assigning values');
-      this.session.setUserName(rsObj.userName);
-      this.session.setIsValidated(rsObj.isValidated);
-      this.session.setRoleId(rsObj.roleId);
-      // cookies.set('username', rsObj.userName);
+      // console.log('assigning values');
+      cookies.set('username', rsObj.userName);
+      cookies.set('isvalidated', rsObj.isValidated);
+      cookies.set('roleid', rsObj.roleId);
+      this.set('err', false);
       this.router.transitionTo('container');
     } else {
       this.set('err', true);
     }
-
-    console.log(this.session.getUserName());
-    console.log(this.session.getIsValidated());
-    console.log(this.session.getRoleId());
-  };
+  }
 }

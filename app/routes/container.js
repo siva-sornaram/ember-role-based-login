@@ -1,18 +1,24 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import cookies from 'ember-cli-js-cookie';
 
 export default class ContainerRoute extends Route {
-  @service session;
-  isvalidated = this.session.getIsValidated();
+  isvalidated = cookies.get('isvalidated');
 
-  @tracked username = this.session.getUserName();
-  @tracked roleId = this.session.getRoleId();
+  @tracked username = cookies.get('username');
+  @tracked roleId = cookies.get('roleid');
 
   beforeModel() {
-    if (!this.session.getIsValidated() && this.session.getUserName() === '') {
-      console.log(this.session.getUserName());
-      console.log(this.session.getIsValidated());
+    // if (!this.session.getIsValidated() && this.session.getUserName() === '') {
+    //   console.log(this.session.getUserName());
+    //   console.log(this.session.getIsValidated());
+    //   this.transitionTo('login-page');
+    // }
+
+    console.log('cookies : ', cookies.get('username'));
+    console.log('cookies : ', cookies.get('isvalidated'));
+
+    if (!cookies.get('isvalidated')) {
       this.transitionTo('login-page');
     }
   }

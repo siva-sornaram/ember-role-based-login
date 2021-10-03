@@ -1,16 +1,14 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
 import $ from 'jquery';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class AdduserHoldComponent extends Component {
-  @service session;
 
   @service router;
 
-  // add_user = () => {
-    @action
-    add_user() {
+  @action
+  add_user() {
     var uname = this.username;
     var mgmt = document.querySelector('#mgmt').checked;
     var admin = document.querySelector('#admin').checked;
@@ -45,16 +43,16 @@ export default class AdduserHoldComponent extends Component {
       },
       error: function (err) {
         console.log(err);
-        $("#message").text("There is an Error ...").css("color", "red");
+        $('#message').text('There is an Error ...').css('color', 'red');
       },
     }).responseText;
 
     console.log(typeof result, result);
 
     if (result) {
-      $("#message").text("Added User Successfully").css("color", "green");
+      $('#message').text('Added User Successfully').css('color', 'green');
     } else {
-      $("#message").text("The User is not added ... ").css("color", "red");
+      $('#message').text('The User is not added ... ').css('color', 'red');
     }
-  };
+  }
 }

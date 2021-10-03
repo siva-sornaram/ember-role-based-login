@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
 import $ from 'jquery';
 
 export default class EdituserHoldComponent extends Component {

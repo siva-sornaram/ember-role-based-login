@@ -20,7 +20,7 @@ export default class LoginController extends Controller {
 
     var result = $.ajax({
       type: 'POST',
-      url: 'http://localhost:8080/role-based-login-backend1/login',
+      url: '/role-based-login-backend1/login',
       data: {
         uname: uname,
         pass: pass,
